@@ -52,7 +52,7 @@ public class ExplicitlyLoadedActivity extends Activity {
 		Intent intent = new Intent();
 		intent.putExtra(TAG, input);
 		// Set Activity's result with result code RESULT_OK
-		setResult(RESULT_OK);
+		setResult(RESULT_OK, intent);
 		// Finish the Activity
 		finish();
 	}

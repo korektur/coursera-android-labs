@@ -33,27 +33,29 @@ public class ActivityLoaderActivity extends Activity {
         
 		// Declare and setup Explicit Activation button
 		Button explicitActivationButton = (Button) findViewById(R.id.explicit_activation_button);
+		//noinspection Convert2Lambda
 		explicitActivationButton.setOnClickListener(new OnClickListener() {
-            
+
 			// Call startExplicitActivation() when pressed
 			@Override
 			public void onClick(View v) {
-				
+
 				startExplicitActivation();
-                
+
 			}
 		});
         
 		// Declare and setup Implicit Activation button
 		Button implicitActivationButton = (Button) findViewById(R.id.implicit_activation_button);
+		//noinspection Convert2Lambda
 		implicitActivationButton.setOnClickListener(new OnClickListener() {
-            
+
 			// Call startImplicitActivation() when pressed
 			@Override
 			public void onClick(View v) {
-                
+
 				startImplicitActivation();
-                
+
 			}
 		});
         
@@ -70,7 +72,7 @@ public class ActivityLoaderActivity extends Activity {
 		Intent explicitIntent = new Intent(this, ExplicitlyLoadedActivity.class);
 		
 		// Start an Activity using that intent and the request code defined above
-		startActivity(explicitIntent);
+		startActivityForResult(explicitIntent, GET_TEXT_REQUEST_CODE);
         
         
 	}
@@ -85,11 +87,10 @@ public class ActivityLoaderActivity extends Activity {
 		// (HINT:  second parameter uses Uri.parse())
 		
         Intent baseIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(URL));
-		
 		// Create a chooser intent, for choosing which Activity
 		// will carry out the baseIntent
 		// (HINT: Use the Intent class' createChooser() method)
-		Intent chooserIntent = Intent.createChooser(baseIntent, null);
+		Intent chooserIntent = Intent.createChooser(baseIntent, CHOOSER_TEXT);
         
         
 		Log.i(TAG,"Chooser Intent Action:" + chooserIntent.getAction());
@@ -97,7 +98,6 @@ public class ActivityLoaderActivity extends Activity {
         
 		// Start the chooser Activity, using the chooser intent
 		startActivity(chooserIntent);
-        
 	}
     
 	@Override
